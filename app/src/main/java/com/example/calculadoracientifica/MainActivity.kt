@@ -5,9 +5,12 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.media.AudioManager
+import android.media.ToneGenerator
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.ContextThemeWrapper
-import android.view.HapticFeedbackConstants
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -40,6 +43,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var panelCalculadora: View
     private lateinit var panelHistorial: View
     private lateinit var prefs: SharedPreferences
+    private lateinit var tono: ToneGenerator
+    private lateinit var vibrador: Vibrator
 
     private var expresion = ""
     private var recienCalculado = false
@@ -68,7 +73,8 @@ class MainActivity : AppCompatActivity() {
         panelCalculadora = findViewById(R.id.panelCalculadora)
         panelHistorial = findViewById(R.id.panelHistorial)
 
-        val audio = getSystemService(AUDIO_SERVICE) as AudioManager
+        tono = ToneGenerator(AudioManager.STREAM_MUSIC, 60)
+        vibrador = getSystemService(Vibrator::class.java)
         val teclado = findViewById<GridLayout>(R.id.teclado)
         for (i in 0 until teclado.childCount) {
             val boton = teclado.getChildAt(i) as Button
@@ -77,8 +83,8 @@ class MainActivity : AppCompatActivity() {
             }
             boton.isSoundEffectsEnabled = false
             boton.setOnClickListener {
-                boton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
-                audio.playSoundEffect(AudioManager.FX_KEY_CLICK, 0.5f)
+                vibrar()
+                tono.startTone(ToneGenerator.TONE_PROP_BEEP, 40)
                 pulsar(boton.text.toString())
             }
         }
@@ -103,6 +109,20 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString("expresion", expresion)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        tono.release()
+    }
+
+    private fun vibrar() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrador.vibrate(VibrationEffect.createOneShot(40, VibrationEffect.DEFAULT_AMPLITUDE))
+        } else {
+            @Suppress("DEPRECATION")
+            vibrador.vibrate(40)
+        }
     }
 
     private fun pulsar(tecla: String) {
