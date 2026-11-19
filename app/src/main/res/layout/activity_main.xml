@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Colores del modo claro. El modo oscuro los cambia desde MainActivity.kt -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E6E8EA"
+    android:background="#808080"
     tools:context=".MainActivity">
 
-    <!-- ===================== Pantalla de la calculadora ===================== -->
     <LinearLayout
         android:id="@+id/panelCalculadora"
         android:layout_width="match_parent"
@@ -19,7 +17,6 @@
         android:paddingEnd="12dp"
         android:paddingBottom="8dp">
 
-        <!-- Barra superior: historial, título y ajustes -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -37,9 +34,9 @@
                 android:minHeight="0dp"
                 android:padding="0dp"
                 android:text="@string/icono_historial"
-                android:textColor="#3E454C"
+                android:textColor="#000000"
                 android:textSize="22sp"
-                app:backgroundTint="#F3F4F5"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <TextView
@@ -48,7 +45,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/titulo"
-                android:textColor="#262A2E"
+                android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -63,19 +60,18 @@
                 android:minHeight="0dp"
                 android:padding="0dp"
                 android:text="@string/icono_ajustes"
-                android:textColor="#3E454C"
+                android:textColor="#000000"
                 android:textSize="22sp"
-                app:backgroundTint="#F3F4F5"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
         </LinearLayout>
 
-        <!-- Pantalla: expresión y resultado previo -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="6dp"
             android:layout_weight="1"
-            android:background="#F3F4F5"
+            android:background="#FFFFFF"
             android:orientation="vertical"
             android:padding="16dp">
 
@@ -84,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:letterSpacing="0.1"
                 android:text="@string/grados"
-                android:textColor="#5C636A"
+                android:textColor="#000000"
                 android:textSize="11sp" />
 
             <TextView
@@ -94,21 +90,10 @@
                 android:layout_weight="1"
                 android:fontFamily="monospace"
                 android:gravity="bottom|end"
-                android:textColor="#262A2E"
+                android:textColor="#000000"
                 android:textSize="34sp" />
-
-            <TextView
-                android:id="@+id/txtResultado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="monospace"
-                android:gravity="end"
-                android:minHeight="30dp"
-                android:textColor="#5C636A"
-                android:textSize="22sp" />
         </LinearLayout>
 
-        <!-- Teclado: 4 columnas x 6 filas -->
         <GridLayout
             android:id="@+id/teclado"
             android:layout_width="match_parent"
@@ -117,7 +102,6 @@
             android:columnCount="4"
             android:rowCount="6">
 
-            <!-- Fila 1: funciones y borrar -->
             <Button
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -128,9 +112,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_sen"
-                android:textColor="#22313D"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp"
-                app:backgroundTint="#CAD4DC"
+                app:backgroundTint="#000000"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -143,9 +127,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_cos"
-                android:textColor="#22313D"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp"
-                app:backgroundTint="#CAD4DC"
+                app:backgroundTint="#000000"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -158,9 +142,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_tan"
-                android:textColor="#22313D"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp"
-                app:backgroundTint="#CAD4DC"
+                app:backgroundTint="#000000"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -173,12 +157,11 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_borrar"
-                android:textColor="#6A372E"
+                android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                app:backgroundTint="#E4D4D0"
+                app:backgroundTint="#FF0000"
                 app:cornerRadius="0dp" />
 
-            <!-- Fila 2: paréntesis, retroceso y división -->
             <Button
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -189,9 +172,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_abrir"
-                android:textColor="#262A2E"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp"
-                app:backgroundTint="#D7DBDF"
+                app:backgroundTint="#000000"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -204,9 +187,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_cerrar"
-                android:textColor="#262A2E"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp"
-                app:backgroundTint="#D7DBDF"
+                app:backgroundTint="#000000"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -219,9 +202,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_retroceso"
-                android:textColor="#262A2E"
+                android:textColor="#FFFFFF"
                 android:textSize="22sp"
-                app:backgroundTint="#D7DBDF"
+                app:backgroundTint="#000000"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -234,12 +217,11 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_dividir"
-                android:textColor="#262A2E"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp"
-                app:backgroundTint="#D7DBDF"
+                app:backgroundTint="#000000"
                 app:cornerRadius="0dp" />
 
-            <!-- Fila 3 -->
             <Button
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -250,9 +232,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_7"
-                android:textColor="#262A2E"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#FAFAFB"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -265,9 +247,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_8"
-                android:textColor="#262A2E"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#FAFAFB"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -280,9 +262,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_9"
-                android:textColor="#262A2E"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#FAFAFB"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -295,12 +277,11 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_multiplicar"
-                android:textColor="#262A2E"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp"
-                app:backgroundTint="#D7DBDF"
+                app:backgroundTint="#000000"
                 app:cornerRadius="0dp" />
 
-            <!-- Fila 4 -->
             <Button
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -311,9 +292,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_4"
-                android:textColor="#262A2E"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#FAFAFB"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -326,9 +307,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_5"
-                android:textColor="#262A2E"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#FAFAFB"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -341,9 +322,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_6"
-                android:textColor="#262A2E"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#FAFAFB"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -356,12 +337,11 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_restar"
-                android:textColor="#262A2E"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp"
-                app:backgroundTint="#D7DBDF"
+                app:backgroundTint="#000000"
                 app:cornerRadius="0dp" />
 
-            <!-- Fila 5 -->
             <Button
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -372,9 +352,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_1"
-                android:textColor="#262A2E"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#FAFAFB"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -387,9 +367,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_2"
-                android:textColor="#262A2E"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#FAFAFB"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -402,9 +382,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_3"
-                android:textColor="#262A2E"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#FAFAFB"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -417,12 +397,11 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_sumar"
-                android:textColor="#262A2E"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp"
-                app:backgroundTint="#D7DBDF"
+                app:backgroundTint="#000000"
                 app:cornerRadius="0dp" />
 
-            <!-- Fila 6: el = ocupa dos columnas -->
             <Button
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -433,9 +412,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_0"
-                android:textColor="#262A2E"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#FAFAFB"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -448,9 +427,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_punto"
-                android:textColor="#262A2E"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#FAFAFB"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -465,14 +444,13 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_igual"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="26sp"
-                app:backgroundTint="#56687A"
+                app:backgroundTint="#00FF00"
                 app:cornerRadius="0dp" />
         </GridLayout>
     </LinearLayout>
 
-    <!-- ===================== Pantalla del historial (oculta al inicio) ===================== -->
     <LinearLayout
         android:id="@+id/panelHistorial"
         android:layout_width="match_parent"
@@ -483,7 +461,6 @@
         android:paddingBottom="8dp"
         android:visibility="gone">
 
-        <!-- Barra superior: volver, título y contador -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -501,9 +478,9 @@
                 android:minHeight="0dp"
                 android:padding="0dp"
                 android:text="@string/icono_volver"
-                android:textColor="#3E454C"
+                android:textColor="#000000"
                 android:textSize="22sp"
-                app:backgroundTint="#F3F4F5"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <TextView
@@ -512,7 +489,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
                 android:text="@string/historial"
-                android:textColor="#262A2E"
+                android:textColor="#000000"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -520,16 +497,15 @@
                 android:id="@+id/txtContador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#5C636A"
+                android:textColor="#000000"
                 android:textSize="13sp" />
         </LinearLayout>
 
-        <!-- Lista de operaciones (la más reciente arriba) -->
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="#F3F4F5">
+            android:background="#FFFFFF">
 
             <TextView
                 android:id="@+id/txtHistorial"
@@ -539,7 +515,7 @@
                 android:gravity="end"
                 android:lineSpacingExtra="4dp"
                 android:padding="16dp"
-                android:textColor="#262A2E"
+                android:textColor="#000000"
                 android:textSize="20sp" />
         </ScrollView>
     </LinearLayout>

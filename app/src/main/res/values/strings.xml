@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Calculadora Cientifica</string>
-
-    <!-- Barra superior y pantalla de historial -->
     <string name="titulo">Calculadora científica</string>
     <string name="historial">Historial</string>
     <string name="ajustes">Ajustes</string>
@@ -12,14 +10,10 @@
     <string name="grados">DEG</string>
     <string name="historial_vacio">Aún no hay operaciones.\nPulsa = para guardar la primera.</string>
     <string name="contador_historial">%1$d / 10</string>
-    <string name="resultado_previo">= %1$s</string>
     <string name="error">Error</string>
-
-    <!-- Menú del engranaje -->
     <string name="modo_oscuro">Modo oscuro</string>
+    <string name="modo_claro">Modo claro</string>
     <string name="borrar_historial">Borrar historial</string>
-
-    <!-- Teclado -->
     <string name="btn_sen">SEN</string>
     <string name="btn_cos">COS</string>
     <string name="btn_tan">TAN</string>
