@@ -1,80 +1,547 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Colores del modo claro. El modo oscuro los cambia desde MainActivity.kt -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E6E8EA"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/lbnDatoUno"
+    <!-- ===================== Pantalla de la calculadora ===================== -->
+    <LinearLayout
+        android:id="@+id/panelCalculadora"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/strNumeroUno"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp">
 
-    <EditText
-        android:id="@+id/txtDatoUno"
+        <!-- Barra superior: historial, título y ajustes -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnHistorial"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:contentDescription="@string/historial"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:text="@string/icono_historial"
+                android:textColor="#3E454C"
+                android:textSize="22sp"
+                app:backgroundTint="#F3F4F5"
+                app:cornerRadius="0dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/titulo"
+                android:textColor="#262A2E"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnAjustes"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:contentDescription="@string/ajustes"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:text="@string/icono_ajustes"
+                android:textColor="#3E454C"
+                android:textSize="22sp"
+                app:backgroundTint="#F3F4F5"
+                app:cornerRadius="0dp" />
+        </LinearLayout>
+
+        <!-- Pantalla: expresión y resultado previo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="6dp"
+            android:layout_weight="1"
+            android:background="#F3F4F5"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.1"
+                android:text="@string/grados"
+                android:textColor="#5C636A"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/txtExpresion"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:gravity="bottom|end"
+                android:textColor="#262A2E"
+                android:textSize="34sp" />
+
+            <TextView
+                android:id="@+id/txtResultado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:gravity="end"
+                android:minHeight="30dp"
+                android:textColor="#5C636A"
+                android:textSize="22sp" />
+        </LinearLayout>
+
+        <!-- Teclado: 4 columnas x 6 filas -->
+        <GridLayout
+            android:id="@+id/teclado"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.8"
+            android:columnCount="4"
+            android:rowCount="6">
+
+            <!-- Fila 1: funciones y borrar -->
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_sen"
+                android:textColor="#22313D"
+                android:textSize="16sp"
+                app:backgroundTint="#CAD4DC"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_cos"
+                android:textColor="#22313D"
+                android:textSize="16sp"
+                app:backgroundTint="#CAD4DC"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_tan"
+                android:textColor="#22313D"
+                android:textSize="16sp"
+                app:backgroundTint="#CAD4DC"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_borrar"
+                android:textColor="#6A372E"
+                android:textSize="20sp"
+                app:backgroundTint="#E4D4D0"
+                app:cornerRadius="0dp" />
+
+            <!-- Fila 2: paréntesis, retroceso y división -->
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_abrir"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#D7DBDF"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_cerrar"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#D7DBDF"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_retroceso"
+                android:textColor="#262A2E"
+                android:textSize="22sp"
+                app:backgroundTint="#D7DBDF"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_dividir"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#D7DBDF"
+                app:cornerRadius="0dp" />
+
+            <!-- Fila 3 -->
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_7"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#FAFAFB"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_8"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#FAFAFB"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_9"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#FAFAFB"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_multiplicar"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#D7DBDF"
+                app:cornerRadius="0dp" />
+
+            <!-- Fila 4 -->
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_4"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#FAFAFB"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_5"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#FAFAFB"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_6"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#FAFAFB"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_restar"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#D7DBDF"
+                app:cornerRadius="0dp" />
+
+            <!-- Fila 5 -->
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_1"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#FAFAFB"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_2"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#FAFAFB"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_3"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#FAFAFB"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_sumar"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#D7DBDF"
+                app:cornerRadius="0dp" />
+
+            <!-- Fila 6: el = ocupa dos columnas -->
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_0"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#FAFAFB"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_punto"
+                android:textColor="#262A2E"
+                android:textSize="24sp"
+                app:backgroundTint="#FAFAFB"
+                app:cornerRadius="0dp" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnSpan="2"
+                android:layout_columnWeight="2"
+                android:layout_gravity="fill"
+                android:layout_margin="3dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:text="@string/btn_igual"
+                android:textColor="#FFFFFF"
+                android:textSize="26sp"
+                app:backgroundTint="#56687A"
+                app:cornerRadius="0dp" />
+        </GridLayout>
+    </LinearLayout>
+
+    <!-- ===================== Pantalla del historial (oculta al inicio) ===================== -->
+    <LinearLayout
+        android:id="@+id/panelHistorial"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbnDatoUno" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp"
+        android:visibility="gone">
 
-    <TextView
-        android:id="@+id/lbnDatoDos"
+        <!-- Barra superior: volver, título y contador -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="@string/strNumeroDos"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDatoUno" />
+            <Button
+                android:id="@+id/btnVolver"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:contentDescription="@string/volver"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:text="@string/icono_volver"
+                android:textColor="#3E454C"
+                android:textSize="22sp"
+                app:backgroundTint="#F3F4F5"
+                app:cornerRadius="0dp" />
 
-    <EditText
-        android:id="@+id/txtDatoDos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbnDatoDos" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="@string/historial"
+                android:textColor="#262A2E"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/lbnRasultado"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/strResultado"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDatoDos" />
+            <TextView
+                android:id="@+id/txtContador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#5C636A"
+                android:textSize="13sp" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/lbnCalculo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbnRasultado" />
+        <!-- Lista de operaciones (la más reciente arriba) -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#F3F4F5">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/txtHistorial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:gravity="end"
+                android:lineSpacingExtra="4dp"
+                android:padding="16dp"
+                android:textColor="#262A2E"
+                android:textSize="20sp" />
+        </ScrollView>
+    </LinearLayout>
+
+</FrameLayout>
