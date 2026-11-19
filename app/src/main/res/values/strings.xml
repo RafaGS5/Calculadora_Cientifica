@@ -18,6 +18,8 @@
     <string name="btn_cos">COS</string>
     <string name="btn_tan">TAN</string>
     <string name="btn_borrar">C</string>
+    <string name="btn_raiz">√</string>
+    <string name="btn_potencia">^</string>
     <string name="btn_abrir">(</string>
     <string name="btn_cerrar">)</string>
     <string name="btn_retroceso">⌫</string>

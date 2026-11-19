@@ -4,8 +4,10 @@ import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.media.AudioManager
 import android.os.Bundle
 import android.view.ContextThemeWrapper
+import android.view.HapticFeedbackConstants
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -25,7 +27,9 @@ import com.google.android.material.button.MaterialButton
 import java.util.Locale
 import kotlin.math.abs
 import kotlin.math.cos
+import kotlin.math.pow
 import kotlin.math.sin
+import kotlin.math.sqrt
 import kotlin.math.tan
 
 class MainActivity : AppCompatActivity() {
@@ -64,13 +68,19 @@ class MainActivity : AppCompatActivity() {
         panelCalculadora = findViewById(R.id.panelCalculadora)
         panelHistorial = findViewById(R.id.panelHistorial)
 
+        val audio = getSystemService(AUDIO_SERVICE) as AudioManager
         val teclado = findViewById<GridLayout>(R.id.teclado)
         for (i in 0 until teclado.childCount) {
             val boton = teclado.getChildAt(i) as Button
             if (boton is MaterialButton) {
                 boton.rippleColor = ColorStateList.valueOf(Color.argb(60, 128, 128, 128))
             }
-            boton.setOnClickListener { pulsar(boton.text.toString()) }
+            boton.isSoundEffectsEnabled = false
+            boton.setOnClickListener {
+                boton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+                audio.playSoundEffect(AudioManager.FX_KEY_CLICK, 0.5f)
+                pulsar(boton.text.toString())
+            }
         }
 
         findViewById<View>(R.id.btnHistorial).setOnClickListener { mostrarHistorial(true) }
@@ -100,7 +110,7 @@ class MainActivity : AppCompatActivity() {
             calcular()
             return
         }
-        if (recienCalculado && tecla !in listOf("+", "−", "×", "÷", "⌫")) expresion = ""
+        if (recienCalculado && tecla !in listOf("+", "−", "×", "÷", "^", "⌫")) expresion = ""
         recienCalculado = false
 
         expresion = when (tecla) {
@@ -169,13 +179,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun multiplicacionDivision(): Double {
-        var resultado = factor()
+        var resultado = potencia()
         while (pos < texto.length && texto[pos] in "×÷") {
             val operador = texto[pos++]
-            val siguiente = factor()
+            val siguiente = potencia()
             resultado = if (operador == '×') resultado * siguiente else resultado / siguiente
         }
         return resultado
+    }
+
+    private fun potencia(): Double {
+        val base = factor()
+        if (pos < texto.length && texto[pos] == '^') {
+            pos++
+            return base.pow(potencia())
+        }
+        return base
     }
 
     private fun factor(): Double {
@@ -183,7 +202,12 @@ class MainActivity : AppCompatActivity() {
 
         if (texto[pos] == '−') {
             pos++
-            return -factor()
+            return -potencia()
+        }
+
+        if (texto[pos] == '√') {
+            pos++
+            return sqrt(factor())
         }
 
         if (texto[pos] == '(') {
