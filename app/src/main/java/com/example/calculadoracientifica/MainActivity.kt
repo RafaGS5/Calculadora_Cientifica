@@ -1,5 +1,7 @@
 package com.example.calculadoracientifica
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -18,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
 import androidx.core.graphics.toColorInt
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
@@ -97,7 +100,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun pulsar(tecla: String) {
         if (tecla == "=") {
-            calcular()
+            if (expresion == "666") abrirDoom() else calcular()
             return
         }
         if (recienCalculado && tecla !in listOf("+", "−", "×", "÷", "⌫")) expresion = ""
@@ -129,6 +132,16 @@ class MainActivity : AppCompatActivity() {
             actualizarPantalla()
         } catch (e: Exception) {
             expresion = ""
+            txtExpresion.text = getString(R.string.error)
+        }
+    }
+
+    private fun abrirDoom() {
+        expresion = ""
+        actualizarPantalla()
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, getString(R.string.url_doom).toUri()))
+        } catch (e: ActivityNotFoundException) {
             txtExpresion.text = getString(R.string.error)
         }
     }
