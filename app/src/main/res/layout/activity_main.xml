@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#808080"
+    android:background="#DDDDDD"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -112,9 +112,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_sen"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="16sp"
-                app:backgroundTint="#000000"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -127,9 +127,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_cos"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="16sp"
-                app:backgroundTint="#000000"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -142,9 +142,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_tan"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="16sp"
-                app:backgroundTint="#000000"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -157,9 +157,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_borrar"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="20sp"
-                app:backgroundTint="#FF0000"
+                app:backgroundTint="#F08080"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -172,9 +172,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_abrir"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#000000"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -187,9 +187,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_cerrar"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#000000"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -202,9 +202,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_retroceso"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="22sp"
-                app:backgroundTint="#000000"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -217,9 +217,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_dividir"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#000000"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -277,9 +277,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_multiplicar"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#000000"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -337,9 +337,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_restar"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#000000"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -397,9 +397,9 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:text="@string/btn_sumar"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                app:backgroundTint="#000000"
+                app:backgroundTint="#FFFFFF"
                 app:cornerRadius="0dp" />
 
             <Button
@@ -446,7 +446,7 @@
                 android:text="@string/btn_igual"
                 android:textColor="#000000"
                 android:textSize="26sp"
-                app:backgroundTint="#00FF00"
+                app:backgroundTint="#90EE90"
                 app:cornerRadius="0dp" />
         </GridLayout>
     </LinearLayout>

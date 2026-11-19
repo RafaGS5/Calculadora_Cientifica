@@ -11,7 +11,6 @@
     <string name="historial_vacio">Aún no hay operaciones.\nPulsa = para guardar la primera.</string>
     <string name="contador_historial">%1$d / 10</string>
     <string name="error">Error</string>
-    <string name="url_doom" translatable="false">https://archive.org/details/DoomsharewareEpisode</string>
     <string name="modo_oscuro">Modo oscuro</string>
     <string name="modo_claro">Modo claro</string>
     <string name="borrar_historial">Borrar historial</string>

@@ -1,7 +1,5 @@
 package com.example.calculadoracientifica
 
-import android.content.ActivityNotFoundException
-import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -20,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
 import androidx.core.graphics.toColorInt
-import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
@@ -100,7 +97,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun pulsar(tecla: String) {
         if (tecla == "=") {
-            if (expresion == "666") abrirDoom() else calcular()
+            calcular()
             return
         }
         if (recienCalculado && tecla !in listOf("+", "−", "×", "÷", "⌫")) expresion = ""
@@ -132,16 +129,6 @@ class MainActivity : AppCompatActivity() {
             actualizarPantalla()
         } catch (e: Exception) {
             expresion = ""
-            txtExpresion.text = getString(R.string.error)
-        }
-    }
-
-    private fun abrirDoom() {
-        expresion = ""
-        actualizarPantalla()
-        try {
-            startActivity(Intent(Intent.ACTION_VIEW, getString(R.string.url_doom).toUri()))
-        } catch (e: ActivityNotFoundException) {
             txtExpresion.text = getString(R.string.error)
         }
     }
@@ -269,11 +256,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val coloresOscuros = mapOf(
-        "#808080" to "#1A1A1A",
+        "#DDDDDD" to "#1A1A1A",
         "#FFFFFF" to "#333333",
-        "#000000" to "#2B2F34",
-        "#FF0000" to "#660000",
-        "#00FF00" to "#274E13"
+        "#F08080" to "#660000",
+        "#90EE90" to "#274E13"
     ).entries.associate { it.key.toColorInt() to it.value.toColorInt() }
 
     private fun pintarOscuro(vista: View) {
